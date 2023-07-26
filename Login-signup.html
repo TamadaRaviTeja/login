@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login-Signup</title>
+    <style>
+        body{
+            margin:0;
+            padding: 0;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            background-image: url("back.jpg");
+            background-repeat: no-repeat;
+            background-size:cover;
+        }
+        .container{
+            width:100%;
+            height:100vh;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .inner{
+            display:flex;
+            justify-content: space-around;
+            align-items: center;
+            gap:50px;
+        }
+        .bt1 , .bt2{
+            width:120px;
+            height:50px;
+            font-size: medium;
+            font-weight: 600;
+            border-radius:10px;
+            border:none;
+            outline:none;
+            cursor: pointer;
+            box-shadow: 3px 3px 3px rgb(13, 158, 255);
+        }
+        .bt1:hover , .bt2:hover{
+            background-color: rgb(178, 112, 241);
+            color:white;
+        }
+        .bt1:active , .bt2:active{
+            transform:scale(0.9);
+        }
+        .popup{
+            width:400px;
+            height:400px;
+            background-image:url("back1.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%)scale(0.1);
+            border-radius:10px;
+            visibility: hidden;
+            transition:transform 0.4s, 0.5s; 
+            box-shadow: 3px 3px 3px  white;
+                  
+        }
+        .openpop{
+            transform:translate(-50%,-50%)scale(1);
+            visibility:visible;
+        }
+        .popup1{
+            width:400px;
+            height:400px;
+            background-color: rgb(0, 0, 0);
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform:translate(-50%,-50%)scale(0.1);
+            border-radius:10px;
+            visibility: hidden;
+            transition:transform 0.4s, 0.5s;
+            box-shadow: 3px 3px 3px  white;
+            background-image:url("back1.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+
+            
+        }
+        .openpop1{
+            transform:translate(-50%,-50%)scale(1);
+            visibility:visible;
+        }
+        
+        .log{
+            color:blue;
+        }
+        input[type="text"],input[type="email"],input[type="password"],input[type="number"]{
+            width:250px;
+            height:30px;
+            border:none;
+            outline:none;
+            position:absolute;
+            left:80px;
+            top:50px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: medium;
+            box-shadow: 2px 2px 2px blue;
+        }
+        ::placeholder{
+            color:black;
+            font-size: 15px;
+        }
+        input[type="email"]{
+            margin-top:60px;
+        }
+        input[type="password"]{
+            margin-top:120px;
+        }
+        input[type="number"]{
+            margin-top: 180px;
+        }
+        input[type="text"]:focus,input[type="email"]:focus,input[type="password"]:focus,input[type="number"]:focus{
+            border:2px solid red;
+        }
+
+        .submit1,.submit2,.submit3{
+            width:100px;
+            height:35px;
+            border-radius: 5px;
+            border:none;
+            outline:none;
+            background-color: rgb(75, 6, 235);
+            font-size: medium;
+            color:rgb(255, 255, 255);
+            cursor: pointer;
+            box-shadow: 2px 2px 2px white;
+        }
+        .submit1:active,.submit2:active,.submit3:active{
+            transform: translateY(4px);
+        }
+        .submit1{
+            position: absolute;
+            top:300px;
+            left:110px;
+        }
+        .submit2{
+            position: absolute;
+            top:300px;
+            left:220px;
+        }
+        .submit3{
+            position: absolute;
+            top:360px;
+            left:160px;
+        }
+        .submit5{
+            position: absolute;
+            top:250px;
+            left:150px;
+            width:100px;
+            height:35px;
+            border-radius: 5px;
+            border:none;
+            outline:none;
+            background-color: rgb(75, 6, 235);
+            font-size: medium;
+            color:rgb(255, 255, 255);
+            cursor: pointer;
+            box-shadow: 2px 2px 2px white;
+
+        }
+        .btt{
+            position: absolute;
+            top:330px;
+            left:150px;
+            width:100px;
+            height:35px;
+            border-radius: 5px;
+            border:none;
+            outline:none;
+            background-color: rgb(75, 6, 235);
+            font-size: medium;
+            color:rgb(255, 255, 255);
+            cursor: pointer;
+            box-shadow: 2px 2px 2px white;
+        }
+        .img1,.img2,.img3,.img4{
+            width:35px;
+            height:35px;
+            border-radius: 50%;
+        }
+        .img1{
+            position:absolute;
+            top:50px;
+            left:30px;
+        }
+        .img2{
+            position:absolute;
+            top:110px;
+            left:30px;
+            border-radius:0 ;
+        }
+        .img3{
+            position:absolute;
+            top:170px;
+            left:30px;
+        }
+        .img4{
+            position:absolute;
+            top:230px;
+            left:30px;
+        }
+        
+        .popup1 input[type="text"]{
+            position:absolute;
+            top:100px;
+        }
+        .popup1 input[type="password"]{
+            position:absolute;
+            top:50px;  
+        }
+        .head{
+            font-size:30px;
+            color:white;
+            display:flex;
+            justify-content: center;
+        }
+        .img7,.img8{
+            width:35px;
+            height:35px;
+            
+        }
+        .img7{
+            position: absolute;
+            top:110px;
+            left:30px;
+
+        }.img8{
+            position: absolute;
+            top:170px;
+            left:30px;
+            border-radius: 50%; 
+            
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="inner">
+            <button type="submit" onclick="openbt1()" class="bt1">Signup</button>
+            <button type="submit" onclick="openbt2()" class="bt2">Login</button>
+                <div class="popup" id="popup">
+                    <form action="signup.php" method="post">
+                        <img src="user.png" class="img1">
+                        <input type="text" placeholder="Enter Yout Name" name="sname" required>
+                        <img src="email.png" class="img2">
+                        <input type="email" placeholder="Enter Yout Email" name="email" required>
+                        <img src="password.png" class="img3">
+                        <input type="password" placeholder="Enter Yout Password" name="password" required>
+                        <button type="submit" class="submit1">Register</button name="submit">
+                        <img src="contact.jpg" class="img4">
+                        <input type="number" placeholder="Enter Mobile Number" name="number" required>
+
+                    </form>
+                    <div class="foot"> 
+                        <button type="submit" class="submit2" onclick="closebt1()">Close</button>
+                       <button class="submit3" onclick="login()">Login</button>
+                    </div>
+                </div> 
+                <div class="popup1" id="popup1">
+                    <h1 class="head">Login</h1>
+                    <form action="login.php" method="post">
+                        <img src="email.png" class="img7">
+                        <input type="email" name="email" placeholder="Enter Yout Email" class="log1">
+                        <img src="password.png" class="img8">
+                        <input type="password" name="password" placeholder="Enter Yout Password" class="log2">
+                        <button type="submit" class="submit5">Login</button>
+
+                    </form>
+                    <button type="submit" onclick="closebt2()"  class="btt">Close</button>
+                </div> 
+        </div>
+    </div>
+
+    <script>
+        let popup = document.getElementById("popup");
+        function openbt1(){
+            popup.classList.add("openpop");
+        }
+        function closebt1(){
+            popup.classList.remove("openpop");
+        }
+        let popup1 = document.getElementById("popup1");
+        function openbt2(){
+            popup1.classList.add("openpop1");
+        }
+        function closebt2(){
+            popup1.classList.remove("openpop1");
+        }
+
+        function login(){
+            popup1.classList.add("openpop1");
+        }
+
+        
+    </script>
+</body>
+</html>
